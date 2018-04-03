@@ -13,12 +13,13 @@ $(document).ready(function() {
     var _inputAirplane        = _editModalElement.find('#airplane');
     var _btnSelectAirplane    = _editModalElement.find('#btnSelectAirplane');
 
-    var _inputOrigin          = _editModalElement.find('#origin');
-    var _btnSelectOrigin      = _editModalElement.find('#btnSelectOrigin');
+    var _inputOrigin             = _editModalElement.find('#origin');
+    var _inputOriginDisplay      = _editModalElement.find('#originDisplay');
+    var _btnSelectOrigin         = _editModalElement.find('#btnSelectOrigin');
 
-    var _inputDestination     = _editModalElement.find('#destination');
-    var _btnSelectDestination = _editModalElement.find('#btnSelectDestination');
-
+    var _inputDestination        = _editModalElement.find('#destination');
+    var _inputDestinationDisplay = _editModalElement.find('#destinationDisplay');
+    var _btnSelectDestination    = _editModalElement.find('#btnSelectDestination');
 
     _tableElement.find('tbody').on('click', 'tr', function() {
         var data = _dataTable.row(this).data();
@@ -78,9 +79,10 @@ $(document).ready(function() {
         var _airportsTable = _airportSelectModal.find('#airportsTable');
 
         _airportsTable.find('tbody').on('click', 'tr', function() {
-            var data = _airportsTable.DataTable().row(this).data();
+            var airport = _airportsTable.DataTable().row(this).data();
 
-            _inputOrigin.val(data.id);
+            _inputOrigin.val(airport.id);
+            _inputOriginDisplay.val(airport.name);
             _airportSelectModal.modal('hide');
         });
 
@@ -91,9 +93,10 @@ $(document).ready(function() {
         var _airportsTable = _airportSelectModal.find('#airportsTable');
 
         _airportsTable.find('tbody').on('click', 'tr', function() {
-            var data = _airportsTable.DataTable().row(this).data();
+            var airport = _airportsTable.DataTable().row(this).data();
 
-            _inputDestination.val(data.id);
+            _inputDestination.val(airport.id);
+            _inputDestinationDisplay.val(airport.name);
             _airportSelectModal.modal('hide');
         });
 
@@ -109,12 +112,16 @@ $(document).ready(function() {
             _inputId.val(flight.id);
             _inputAirplane.val(flight.airplane ? flight.airplane.id : "");
             _inputOrigin.val(flight.origin ? flight.origin.id : "");
+            _inputOriginDisplay.val(flight.origin ? flight.origin.name : "");
             _inputDestination.val(flight.destination ? flight.destination.id : "");
+            _inputDestinationDisplay.val(flight.destination ? flight.destination.name : "");
         } else {
             _inputId.val("");
             _inputAirplane.val("");
             _inputOrigin.val("");
+            _inputOriginDisplay.val("");
             _inputDestination.val("");
+            _inputDestinationDisplay.val("");
         }
 
         _editModalElement.modal('show');
