@@ -12,15 +12,21 @@ $(document).ready(function() {
             },
             {
                 title: "Airplane",
-                data: "airplane.id",
+                data: function(data) {
+                    return data.airplane ? data.airplane.id : "";
+                },
             },
             {
                 title: "Origin",
-                data: "origin.name",
+                data: function(data) {
+                    return data.origin ? data.origin.name : "";
+                },
             },
             {
                 title: "Destination",
-                data: "destination.name",
+                data: function(data) {
+                    return data.destination ? data.destination.name : "";
+                },
             },
         ]
     });

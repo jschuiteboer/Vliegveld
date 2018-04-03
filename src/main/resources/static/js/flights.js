@@ -24,6 +24,9 @@ $(document).ready(function() {
     _saveButton.click(function() {
         var flight = {
             id: _inputId.val(),
+            airplane: {
+                id: _inputAirplane.val(),
+            },
         };
 
         $.ajax({
@@ -58,8 +61,10 @@ $(document).ready(function() {
     function openModal(flight) {
         if(flight) {
             _inputId.val(flight.id);
+            _inputAirplane.val(flight.airplane ? flight.airplane.id : "");
         } else {
             _inputId.val("");
+            _inputAirplane.val("");
         }
 
         _editModalElement.modal('show');
