@@ -18,6 +18,18 @@ $(document).ready(function() {
                 title: "ID",
                 data: "id",
             },
+            {
+                title: "Airplane",
+                data: "airplane.id",
+            },
+            {
+                title: "Origin",
+                data: "origin.name",
+            },
+            {
+                title: "Destination",
+                data: "destination.name",
+            },
         ]
     });
 
