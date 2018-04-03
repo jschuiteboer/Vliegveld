@@ -1,17 +1,17 @@
 {{>base/head}}
 {{>base/header}}
 <main class="container">
-    <table id="airplanesTable" class="table table-hover"></table>
+    <table id="locationsTable" class="table table-hover"></table>
 
     <button id="addButton" type="button" class="btn btn-primary">
-        Add new airplane
+        Add new location
     </button>
 
-    <div id="airplaneModal" class="modal" tabindex="-1" role="dialog">
+    <div id="locationModal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Airplane</h5>
+                    <h5 class="modal-title">Edit Location</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -20,8 +20,8 @@
                     <input type="hidden" id="id" />
 
                     <div class="form-group">
-                        <label for="fuel">Fuel Level</label>
-                        <input type="number" id="fuel" class="form-control" />
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -33,5 +33,5 @@
     </div>
 </main>
 
-<script src="/js/airplanes.js"></script>
+<script src="/js/locations.js"></script>
 {{>base/footer}}
