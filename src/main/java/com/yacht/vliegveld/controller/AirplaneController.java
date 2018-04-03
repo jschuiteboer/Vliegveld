@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/airplanes")
 public class AirplaneController {
+    private static final int MAX_FUEL_LEVEL = 5;
 
     @Autowired
     AirplaneRepository airplaneRepository;
@@ -19,6 +20,10 @@ public class AirplaneController {
 
     @PutMapping
     public Airplane save(@RequestBody Airplane airplane) {
+        if(airplane.getFuel() > MAX_FUEL_LEVEL) {
+            throw new RuntimeException("Can not exceed max fuel level of " + MAX_FUEL_LEVEL);
+        }
+
         return this.airplaneRepository.save(airplane);
     }
 }
