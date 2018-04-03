@@ -5,11 +5,17 @@ $(document).ready(function() {
     var _addButton           = $('#addButton');
     var _editModalElement    = $('#flightModal');
     var _inputId             = _editModalElement.find('#id');
-    var _inputAirplane       = _editModalElement.find('#airplane');
     var _saveButton          = _editModalElement.find('#btnSave');
-    var _btnSelectAirplane   = _editModalElement.find('#btnSelectAirplane');
-    var _airplaneSelectModal = $('#airplaneSelectModal');
     var _dataTable           = _tableElement.DataTable();
+
+    var _airplaneSelectModal = $('#airplaneSelectModal');
+    var _inputAirplane       = _editModalElement.find('#airplane');
+    var _btnSelectAirplane   = _editModalElement.find('#btnSelectAirplane');
+
+    var _airportSelectModal  = $('#airportSelectModal');
+    var _inputOrigin         = _editModalElement.find('#origin');
+    var _btnSelectOrigin     = _editModalElement.find('#btnSelectOrigin');
+
 
     _tableElement.find('tbody').on('click', 'tr', function() {
         var data = _dataTable.row(this).data();
@@ -27,6 +33,9 @@ $(document).ready(function() {
             airplane: {
                 id: _inputAirplane.val(),
             },
+            origin: {
+                id: _inputOrigin.val(),
+            }
         };
 
         $.ajax({
@@ -54,6 +63,19 @@ $(document).ready(function() {
         _airplaneSelectModal.modal('show');
     });
 
+    _btnSelectOrigin.click(function() {
+        var _airportsTable = _airportSelectModal.find('#airportsTable');
+
+        _airportsTable.find('tbody').on('click', 'tr', function() {
+            var data = _airportsTable.DataTable().row(this).data();
+
+            _inputOrigin.val(data.id);
+            _airportSelectModal.modal('hide');
+        });
+
+        _airportSelectModal.modal('show');
+    });
+
     /**
      * Opens the modal and sets the form values.
      * @param flight - the flight object, null for an empty form
@@ -62,9 +84,11 @@ $(document).ready(function() {
         if(flight) {
             _inputId.val(flight.id);
             _inputAirplane.val(flight.airplane ? flight.airplane.id : "");
+            _inputOrigin.val(flight.origin ? flight.origin.id : "");
         } else {
             _inputId.val("");
             _inputAirplane.val("");
+            _inputOrigin.val("");
         }
 
         _editModalElement.modal('show');
