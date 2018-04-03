@@ -5,6 +5,8 @@ $(document).ready(function() {
     var _addButton    = $('#addButton');
     var _modalElement = $('#airplaneModal');
     var _inputId      = _modalElement.find('#id');
+    var _inputLat     = _modalElement.find('#lat');
+    var _inputLng     = _modalElement.find('#lng');
     var _inputFuel    = _modalElement.find('#fuel');
     var _saveButton   = _modalElement.find('#btnSave');
     var _dataTable    = _tableElement.DataTable();
@@ -22,6 +24,8 @@ $(document).ready(function() {
     _saveButton.click(function() {
         var airplane = {
             id: _inputId.val(),
+            lat: _inputLat.val(),
+            lng: _inputLng.val(),
             fuel: _inputFuel.val(),
         };
 
@@ -49,9 +53,13 @@ $(document).ready(function() {
     function openModal(airplane) {
         if(airplane) {
             _inputId.val(airplane.id);
+            _inputLat.val(airplane.lat);
+            _inputLng.val(airplane.lng);
             _inputFuel.val(airplane.fuel);
         } else {
             _inputId.val("");
+            _inputLat.val("");
+            _inputLng.val("");
             _inputFuel.val("");
         }
 
