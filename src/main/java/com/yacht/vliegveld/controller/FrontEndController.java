@@ -15,10 +15,10 @@ public class FrontEndController {
         return "airplanes";
     }
 
-    @GetMapping("locations")
-    public String locations(Model model) {
-        model.addAttribute("pageTitle", "Locations");
+    @GetMapping("airports")
+    public String airports(Model model) {
+        model.addAttribute("pageTitle", "Airports");
 
-        return "locations";
+        return "airports";
     }
 }

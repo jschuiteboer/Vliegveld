@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class Location {
+public class Airport {
     @Id
     @GeneratedValue
     private Long id;

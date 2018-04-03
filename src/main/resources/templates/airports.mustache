@@ -1,17 +1,17 @@
 {{>base/head}}
 {{>base/header}}
 <main class="container">
-    <table id="locationsTable" class="table table-hover"></table>
+    <table id="airportsTable" class="table table-hover"></table>
 
     <button id="addButton" type="button" class="btn btn-primary">
-        Add new location
+        Add new airport
     </button>
 
-    <div id="locationModal" class="modal" tabindex="-1" role="dialog">
+    <div id="airportModal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Location</h5>
+                    <h5 class="modal-title">Edit Airport</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -33,5 +33,5 @@
     </div>
 </main>
 
-<script src="/js/locations.js"></script>
+<script src="/js/airports.js"></script>
 {{>base/footer}}
