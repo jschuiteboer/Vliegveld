@@ -17,4 +17,14 @@ public class Airplane {
      * The amount of fuel in tons
      */
     private int fuel;
+
+    /**
+     * The geographical location of the airplane
+     */
+    private long lat;
+    private long lng;
+
+    public LatLng getLocation() {
+        return new LatLng(this.lat, this.lng);
+    }
 }
