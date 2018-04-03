@@ -21,4 +21,11 @@ public class FrontEndController {
 
         return "airports";
     }
+
+    @GetMapping("flights")
+    public String flights(Model model) {
+        model.addAttribute("pageTitle", "Flights");
+
+        return "flights";
+    }
 }

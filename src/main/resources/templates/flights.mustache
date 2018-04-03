@@ -1,0 +1,33 @@
+{{>base/head}}
+{{>base/header}}
+<main class="container">
+    <table id="flightsTable" class="table table-hover"></table>
+
+    <button id="addButton" type="button" class="btn btn-primary">
+        Add new flight
+    </button>
+
+    <div id="flightModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Flight</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="id" />
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnSave" type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/js/flights.js"></script>
+{{>base/footer}}

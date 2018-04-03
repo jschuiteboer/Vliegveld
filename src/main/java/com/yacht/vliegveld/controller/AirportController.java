@@ -18,7 +18,7 @@ public class AirportController {
     }
 
     @PutMapping
-    public Airport save(@RequestBody Airport airplane) {
-        return this.airportRepository.save(airplane);
+    public Airport save(@RequestBody Airport airport) {
+        return this.airportRepository.save(airport);
     }
 }
