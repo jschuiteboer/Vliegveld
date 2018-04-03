@@ -1,11 +1,14 @@
 $(document).ready(function() {
     const restEndpoint = '/api/flights/';
 
-    var _tableElement = $('#flightsTable');
-    var _addButton    = $('#addButton');
-    var _modalElement = $('#flightModal');
-    var _inputId      = _modalElement.find('#id');
-    var _saveButton   = _modalElement.find('#btnSave');
+    var _tableElement        = $('#flightsTable');
+    var _addButton           = $('#addButton');
+    var _editModalElement    = $('#flightModal');
+    var _inputId             = _editModalElement.find('#id');
+    var _inputAirplane       = _editModalElement.find('#airplane');
+    var _saveButton          = _editModalElement.find('#btnSave');
+    var _btnSelectAirplane   = _editModalElement.find('#btnSelectAirplane');
+    var _airplaneSelectModal = $('#airplaneSelectModal');
 
     var _dataTable = _tableElement.DataTable({
         ajax: {
@@ -54,11 +57,24 @@ $(document).ready(function() {
             type: 'put',
             data: JSON.stringify(flight),
             success: function() {
-                _modalElement.modal('hide');
+                _editModalElement.modal('hide');
                 _dataTable.ajax.reload();
             },
         });
-    })
+    });
+
+    _btnSelectAirplane.click(function() {
+        var _airplanesTable = _airplaneSelectModal.find('#airplanesTable');
+
+        _airplanesTable.find('tbody').on('click', 'tr', function() {
+            var data = _airplanesTable.DataTable().row(this).data();
+
+            _inputAirplane.val(data.id);
+            _airplaneSelectModal.modal('hide');
+        });
+
+        _airplaneSelectModal.modal('show');
+    });
 
     /**
      * Opens the modal and sets the form values.
@@ -71,6 +87,6 @@ $(document).ready(function() {
             _inputId.val("");
         }
 
-        _modalElement.modal('show');
+        _editModalElement.modal('show');
     }
 });

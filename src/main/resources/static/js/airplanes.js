@@ -7,24 +7,7 @@ $(document).ready(function() {
     var _inputId      = _modalElement.find('#id');
     var _inputFuel    = _modalElement.find('#fuel');
     var _saveButton   = _modalElement.find('#btnSave');
-
-    var _dataTable = _tableElement.DataTable({
-        ajax: {
-            url: restEndpoint,
-            dataSrc: "",
-            type: "GET",
-        },
-        columns: [
-            {
-                title: "ID",
-                data: "id",
-            },
-            {
-                title: "Fuel Level",
-                data: "fuel",
-            },
-        ]
-    });
+    var _dataTable = _tableElement.DataTable();
 
     _tableElement.find('tbody').on('click', 'tr', function() {
         var data = _dataTable.row(this).data();
