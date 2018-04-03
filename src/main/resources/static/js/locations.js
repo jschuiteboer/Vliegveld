@@ -5,6 +5,7 @@ $(document).ready(function() {
     var _addButton    = $('#addButton');
     var _modalElement = $('#locationModal');
     var _inputId      = _modalElement.find('#id');
+    var _inputName    = _modalElement.find('#name');
     var _saveButton   = _modalElement.find('#btnSave');
 
     var _dataTable = _tableElement.DataTable({
@@ -17,6 +18,10 @@ $(document).ready(function() {
             {
                 title: "ID",
                 data: "id",
+            },
+            {
+                title: "Name",
+                data: "name",
             },
         ]
     });
@@ -34,7 +39,7 @@ $(document).ready(function() {
     _saveButton.click(function() {
         var location = {
             id: _inputId.val(),
-            fuel: _inputFuel.val(),
+            name: _inputName.val(),
         };
 
         $.ajax({
@@ -56,8 +61,10 @@ $(document).ready(function() {
     function openModal(location) {
         if(location) {
             _inputId.val(location.id);
+            _inputName.val(location.name);
         } else {
             _inputId.val("");
+            _inputName.val("");
         }
 
         _modalElement.modal('show');
