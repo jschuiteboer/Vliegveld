@@ -6,6 +6,7 @@ $(document).ready(function() {
     var _modalElement = $('#airplaneModal');
     var _inputId      = _modalElement.find('#id');
     var _inputFuel    = _modalElement.find('#fuel');
+    var _saveButton   = _modalElement.find('#btnSave');
 
     var _dataTable = _tableElement.DataTable({
         ajax: {
@@ -34,6 +35,24 @@ $(document).ready(function() {
     _addButton.click(function() {
         openModal(null);
     });
+
+    _saveButton.click(function() {
+        var airplane = {
+            id: _inputId.val(),
+            fuel: _inputFuel.val(),
+        };
+
+        $.ajax({
+            contentType : 'application/json',
+            url: restEndpoint,
+            type: 'put',
+            data: JSON.stringify(airplane),
+            success: function() {
+                _modalElement.modal('hide');
+                _dataTable.ajax.reload();
+            },
+        });
+    })
 
     /**
      * Opens the modal and sets the form values.
