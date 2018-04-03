@@ -34,6 +34,11 @@ $(document).ready(function() {
                 _modalElement.modal('hide');
                 _dataTable.ajax.reload();
             },
+            error: function(xhr) {
+                var json = JSON.parse(xhr.responseText);
+                var errorMessage = json.message;
+                alert("unable to save airplane: \n" + errorMessage);
+            }
         });
     })
 
