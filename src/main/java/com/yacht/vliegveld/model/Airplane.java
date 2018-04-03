@@ -23,8 +23,4 @@ public class Airplane {
      */
     private long lat;
     private long lng;
-
-    public LatLng getLocation() {
-        return new LatLng(this.lat, this.lng);
-    }
 }
