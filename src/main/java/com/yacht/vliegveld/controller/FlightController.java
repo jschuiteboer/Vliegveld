@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/flights")
 public class FlightController {
+    private static final int FLIGHT_FUEL_COST = 2;
 
     @Autowired
     FlightRepository flightRepository;
@@ -19,6 +20,11 @@ public class FlightController {
 
     @PutMapping
     public Flight save(@RequestBody Flight flight) {
+        if(flight.getAirplane().getFuel() < FLIGHT_FUEL_COST) {
+            // TODO: use more specific exception, I'm short on time
+            throw new RuntimeException("Not enough fuel to start the flight");
+        }
+
         return this.flightRepository.save(flight);
     }
 }
