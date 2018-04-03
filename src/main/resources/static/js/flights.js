@@ -9,32 +9,7 @@ $(document).ready(function() {
     var _saveButton          = _editModalElement.find('#btnSave');
     var _btnSelectAirplane   = _editModalElement.find('#btnSelectAirplane');
     var _airplaneSelectModal = $('#airplaneSelectModal');
-
-    var _dataTable = _tableElement.DataTable({
-        ajax: {
-            url: restEndpoint,
-            dataSrc: "",
-            type: "GET",
-        },
-        columns: [
-            {
-                title: "ID",
-                data: "id",
-            },
-            {
-                title: "Airplane",
-                data: "airplane.id",
-            },
-            {
-                title: "Origin",
-                data: "origin.name",
-            },
-            {
-                title: "Destination",
-                data: "destination.name",
-            },
-        ]
-    });
+    var _dataTable           = _tableElement.DataTable();
 
     _tableElement.find('tbody').on('click', 'tr', function() {
         var data = _dataTable.row(this).data();

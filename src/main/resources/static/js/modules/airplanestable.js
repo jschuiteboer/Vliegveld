@@ -1,9 +1,7 @@
 $(document).ready(function() {
-    const restEndpoint = '/api/airplanes/';
-
-    var _dataTable = $('#airplanesTable').DataTable({
+    $('#airplanesTable').DataTable({
         ajax: {
-            url: restEndpoint,
+            url: '/api/airplanes/',
             dataSrc: "",
             type: "GET",
         },

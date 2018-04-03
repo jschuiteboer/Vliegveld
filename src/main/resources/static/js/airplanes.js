@@ -7,7 +7,7 @@ $(document).ready(function() {
     var _inputId      = _modalElement.find('#id');
     var _inputFuel    = _modalElement.find('#fuel');
     var _saveButton   = _modalElement.find('#btnSave');
-    var _dataTable = _tableElement.DataTable();
+    var _dataTable    = _tableElement.DataTable();
 
     _tableElement.find('tbody').on('click', 'tr', function() {
         var data = _dataTable.row(this).data();
