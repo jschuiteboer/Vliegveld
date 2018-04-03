@@ -1,30 +1,13 @@
 $(document).ready(function() {
-    const restEndpoint = '/api/locations/';
+    const restEndpoint = '/api/airports/';
 
-    var _tableElement = $('#locationsTable');
+    var _tableElement = $('#airportsTable');
     var _addButton    = $('#addButton');
-    var _modalElement = $('#locationModal');
+    var _modalElement = $('#airportModal');
     var _inputId      = _modalElement.find('#id');
     var _inputName    = _modalElement.find('#name');
     var _saveButton   = _modalElement.find('#btnSave');
-
-    var _dataTable = _tableElement.DataTable({
-        ajax: {
-            url: restEndpoint,
-            dataSrc: "",
-            type: "GET",
-        },
-        columns: [
-            {
-                title: "ID",
-                data: "id",
-            },
-            {
-                title: "Name",
-                data: "name",
-            },
-        ]
-    });
+    var _dataTable    = _tableElement.DataTable();
 
     _tableElement.find('tbody').on('click', 'tr', function() {
         var data = _dataTable.row(this).data();
@@ -37,7 +20,7 @@ $(document).ready(function() {
     });
 
     _saveButton.click(function() {
-        var location = {
+        var airport = {
             id: _inputId.val(),
             name: _inputName.val(),
         };
@@ -46,7 +29,7 @@ $(document).ready(function() {
             contentType : 'application/json',
             url: restEndpoint,
             type: 'put',
-            data: JSON.stringify(location),
+            data: JSON.stringify(airport),
             success: function() {
                 _modalElement.modal('hide');
                 _dataTable.ajax.reload();
@@ -56,12 +39,12 @@ $(document).ready(function() {
 
     /**
      * Opens the modal and sets the form values.
-     * @param location - the location object, null for an empty form
+     * @param airport - the airport object, null for an empty form
      */
-    function openModal(location) {
-        if(location) {
-            _inputId.val(location.id);
-            _inputName.val(location.name);
+    function openModal(airport) {
+        if(airport) {
+            _inputId.val(airport.id);
+            _inputName.val(airport.name);
         } else {
             _inputId.val("");
             _inputName.val("");
