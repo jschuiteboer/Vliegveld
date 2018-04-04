@@ -14,4 +14,10 @@ public class Airport {
     private Long id;
 
     private String name;
+
+    /**
+     * The geographical location of the airport
+     */
+    private Double lat;
+    private Double lng;
 }

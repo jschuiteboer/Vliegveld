@@ -6,6 +6,8 @@ $(document).ready(function() {
     var _modalElement = $('#airportModal');
     var _inputId      = _modalElement.find('#id');
     var _inputName    = _modalElement.find('#name');
+    var _inputLat     = _modalElement.find('#lat');
+    var _inputLng     = _modalElement.find('#lng');
     var _saveButton   = _modalElement.find('#btnSave');
     var _dataTable    = _tableElement.DataTable();
 
@@ -23,6 +25,8 @@ $(document).ready(function() {
         var airport = {
             id: _inputId.val(),
             name: _inputName.val(),
+            lat: _inputLat.val(),
+            lng: _inputLng.val(),
         };
 
         $.ajax({
@@ -50,9 +54,13 @@ $(document).ready(function() {
         if(airport) {
             _inputId.val(airport.id);
             _inputName.val(airport.name);
+            _inputLat.val(airport.lat);
+            _inputLng.val(airport.lng);
         } else {
             _inputId.val("");
             _inputName.val("");
+            _inputLat.val("");
+            _inputLng.val("");
         }
 
         _modalElement.modal('show');

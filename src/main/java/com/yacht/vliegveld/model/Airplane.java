@@ -21,10 +21,6 @@ public class Airplane {
     /**
      * The geographical location of the airplane
      */
-    private long lat;
-    private long lng;
-
-    public LatLng getLocation() {
-        return new LatLng(this.lat, this.lng);
-    }
+    private Double lat;
+    private Double lng;
 }
