@@ -1,15 +1,17 @@
 $(document).ready(function() {
     const restEndpoint = '/api/airplanes/';
 
-    var _tableElement = $('#airplanesTable');
-    var _addButton    = $('#addButton');
-    var _modalElement = $('#airplaneModal');
-    var _inputId      = _modalElement.find('#id');
-    var _inputLat     = _modalElement.find('#lat');
-    var _inputLng     = _modalElement.find('#lng');
-    var _inputFuel    = _modalElement.find('#fuel');
-    var _saveButton   = _modalElement.find('#btnSave');
-    var _dataTable    = _tableElement.DataTable();
+    var _tableElement  = $('#airplanesTable');
+    var _dataTable     = _tableElement.DataTable();
+    var _btnAdd        = $('#addButton');
+    var _airplaneModal = $('#airplaneModal');
+    var _inputId           = _airplaneModal.find('#id');
+    var _inputLat          = _airplaneModal.find('#lat');
+    var _inputLng          = _airplaneModal.find('#lng');
+    var _inputFuel         = _airplaneModal.find('#fuel');
+    var _btnSave           = _airplaneModal.find('#btnSave');
+    var _btnPlaceAtAirport = _airplaneModal.find('#btnPlaceAtAirport');
+    var _airportSelectModal = $('#airportSelectModal');
 
     _tableElement.find('tbody').on('click', 'tr', function() {
         var data = _dataTable.row(this).data();
@@ -17,11 +19,11 @@ $(document).ready(function() {
         openModal(data);
     });
 
-    _addButton.click(function() {
+    _btnAdd.click(function() {
         openModal(null);
     });
 
-    _saveButton.click(function() {
+    _btnSave.click(function() {
         var airplane = {
             id: _inputId.val(),
             lat: _inputLat.val(),
@@ -35,7 +37,7 @@ $(document).ready(function() {
             type: 'put',
             data: JSON.stringify(airplane),
             success: function() {
-                _modalElement.modal('hide');
+                _airplaneModal.modal('hide');
                 _dataTable.ajax.reload();
             },
             error: function(xhr) {
@@ -44,7 +46,21 @@ $(document).ready(function() {
                 alert("unable to save airplane: \n" + errorMessage);
             }
         });
-    })
+    });
+
+    _btnPlaceAtAirport.click(function() {
+        var _airportsTable = _airportSelectModal.find('#airportsTable');
+
+        _airportsTable.find('tbody').on('click', 'tr', function() {
+            var airport = _airportsTable.DataTable().row(this).data();
+
+            _inputLat.val(airport.lat);
+            _inputLng.val(airport.lng);
+            _airportSelectModal.modal('hide');
+        });
+
+        _airportSelectModal.modal('show');
+    });
 
     /**
      * Opens the modal and sets the form values.
@@ -63,6 +79,6 @@ $(document).ready(function() {
             _inputFuel.val("");
         }
 
-        _modalElement.modal('show');
+        _airplaneModal.modal('show');
     }
 });
