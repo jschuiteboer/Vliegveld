@@ -14,6 +14,14 @@ $(document).ready(function() {
                 title: "Name",
                 data: "name",
             },
+            {
+                title: "Latitude",
+                data: "lat",
+            },
+            {
+                title: "Longtitude",
+                data: "lng",
+            },
         ]
     });
 });

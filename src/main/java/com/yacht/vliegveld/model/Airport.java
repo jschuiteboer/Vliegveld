@@ -18,6 +18,6 @@ public class Airport {
     /**
      * The geographical location of the airport
      */
-    private long lat;
-    private long lng;
+    private Double lat;
+    private Double lng;
 }

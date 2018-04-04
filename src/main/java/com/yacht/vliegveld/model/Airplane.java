@@ -21,6 +21,6 @@ public class Airplane {
     /**
      * The geographical location of the airplane
      */
-    private long lat;
-    private long lng;
+    private Double lat;
+    private Double lng;
 }
