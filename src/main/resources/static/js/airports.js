@@ -2,13 +2,13 @@ $(document).ready(function() {
     const restEndpoint = '/api/airports/';
 
     var _tableElement = $('#airportsTable');
-    var _addButton    = $('#addButton');
+    var _btnAdd       = $('#addButton');
     var _modalElement = $('#airportModal');
     var _inputId      = _modalElement.find('#id');
     var _inputName    = _modalElement.find('#name');
     var _inputLat     = _modalElement.find('#lat');
     var _inputLng     = _modalElement.find('#lng');
-    var _saveButton   = _modalElement.find('#btnSave');
+    var _btnSave      = _modalElement.find('#btnSave');
     var _dataTable    = _tableElement.DataTable();
 
     _tableElement.find('tbody').on('click', 'tr', function() {
@@ -17,11 +17,11 @@ $(document).ready(function() {
         openModal(data);
     });
 
-    _addButton.click(function() {
+    _btnAdd.click(function() {
         openModal(null);
     });
 
-    _saveButton.click(function() {
+    _btnSave.click(function() {
         var airport = {
             id: _inputId.val(),
             name: _inputName.val(),
