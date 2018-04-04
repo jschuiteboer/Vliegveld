@@ -5,7 +5,7 @@ $(document).ready(function() {
     var _addButton            = $('#addButton');
     var _editModalElement     = $('#flightModal');
     var _inputId              = _editModalElement.find('#id');
-    var _saveButton           = _editModalElement.find('#btnSave');
+    var _btnSave              = _editModalElement.find('#btnSave');
     var _dataTable            = _tableElement.DataTable();
     var _airplaneSelectModal  = $('#airplaneSelectModal');
     var _airportSelectModal   = $('#airportSelectModal');
@@ -31,7 +31,7 @@ $(document).ready(function() {
         openModal(null);
     });
 
-    _saveButton.click(function() {
+    _btnSave.click(function() {
         var flight = {
             id: _inputId.val(),
             airplane: {
